@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ht"><!DOCTYPE html>
+<!DOCTYPE DOCTYPEhtmltml lang="ht"><!DOCTYPE html>
 <html lang="ht">
 <head>
 <meta charset="UTF-8">
@@ -112,83 +111,7 @@ function login() {
  if(!user) {
    alert("Enfòmasyon yo pa kòrèk!");
    return;
- }
-
- currentUser = user;
- showAccount();
-}
-
-function showAccount() {
- document.getElementById("register").style.display="none";
- document.getElementById("login").style.display="none";
- document.getElementById("account").style.display="block";
-
- document.getElementById("welcome").innerText =
- "Byenveni "+currentUser.name;
-
- document.getElementById("balance").innerText =
- currentUser.balance+" HTG";
-}
-
-function deposit() {
- alert("Pou depoze, kontakte administratè Gaboo Shop sou Natcash. Balans lan ap ajou apre verifikasyon peman.");
-}
-
-function buy() {
- alert("Chwazi pwodwi ou vle achte nan Gaboo Shop!");
-}
-
-function logout() {
- currentUser=null;
- location.reload();
-}
-</script>
-
-</body>
-</html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TUP SHOP 🎮</title>
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#080b16;color:white;font-family:Arial}
-header{text-align:center;padding:30px 15px;background:linear-gradient(135deg,#101d45,#5c168e)}
-.logo{display:inline-block;border:3px solid #00eaff;padding:12px 22px;border-radius:18px;font-size:30px;font-weight:900;color:#00eaff}
-header p{margin-top:12px}
-.contact{display:inline-block;margin-top:15px;background:#00c853;color:white;padding:12px 22px;border-radius:25px;text-decoration:none;font-weight:bold}
-.container{max-width:1000px;margin:auto;padding:18px}
-.banner{background:#171c39;padding:22px;border-radius:18px;text-align:center;margin-bottom:25px}
-.banner h2,.game-title{color:#00eaff}
-.game-title{text-align:center;font-size:25px;margin:30px 0 18px}
-.free-title{color:#ff9b28}
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:15px}
-.card{background:#151b2c;border:1px solid #343d59;border-radius:15px;padding:15px 10px;text-align:center}
-.game-logo{font-size:20px;font-weight:900;margin-bottom:12px}
-.flex-logo{color:#00eaff}
-.ff-logo{color:#ff9b28}
-.product{font-weight:bold;margin-bottom:10px}
-.price{color:#00eaff;font-size:20px;font-weight:bold;margin-bottom:13px}
-input{width:100%;padding:11px;margin:6px 0;background:#080b16;color:white;border:1px solid #59627c;border-radius:8px}
-.buy{display:block;background:#00c853;color:white;text-decoration:none;padding:11px 5px;border-radius:9px;font-weight:bold;margin-top:10px}
-.payment{background:#151b2c;padding:22px;border-radius:15px;margin-top:30px;text-align:center;border:1px solid #00c853;line-height:2}
-footer{text-align:center;padding:25px;color:#aaa}
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="logo">TUP_SHOP 👑</div>
-<p>🔥 Byenvini sou TUP SHOP 🔥</p>
-<p>Top-Up Flex City & Free Fire</p>
-<a class="contact" href="https://wa.me/50941712851">📲 Kontakte nou</a>
-</header>
-
-<div class="container">
-
-<div class="banner">
+ }cuivdiv class="banner">
 <h2>🏙️ TUP SHOP 🏙️</h2>
 <p>💎 Diamonds | 🎟️ Pass | 🔥 Top-Up</p>
 </div>
