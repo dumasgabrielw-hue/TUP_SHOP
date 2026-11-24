@@ -1,5 +1,151 @@
 <!DOCTYPE html>
+<html lang="ht"><!DOCTYPE html>
 <html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaboo Shop 🎮</title>
+
+<style>
+body {
+  background:#080812;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  padding:20px;
+}
+.box {
+  background:#19192d;
+  padding:20px;
+  border-radius:15px;
+  max-width:400px;
+  margin:20px auto;
+}
+input {
+  width:90%;
+  padding:12px;
+  margin:8px;
+  border-radius:8px;
+  border:none;
+}
+button {
+  padding:12px 20px;
+  margin:8px;
+  border:0;
+  border-radius:8px;
+  background:#8b35ff;
+  color:white;
+  font-weight:bold;
+}
+.balance {
+  color:#00ff99;
+  font-size:25px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎮 GABOO SHOP</h1>
+<p>Byenveni nan Gaboo Shop!</p>
+
+<div class="box" id="register">
+<h2>KREYE KONT</h2>
+<input id="name" placeholder="Non ou">
+<input id="email" placeholder="Imèl ou">
+<input id="password" type="password" placeholder="Modpas">
+<button onclick="register()">KREYE KONT</button>
+</div>
+
+<div class="box" id="login">
+<h2>KONEKTE</h2>
+<input id="loginEmail" placeholder="Imèl">
+<input id="loginPassword" type="password" placeholder="Modpas">
+<button onclick="login()">KONEKTE</button>
+</div>
+
+<div class="box" id="account" style="display:none">
+<h2>👤 KONT MWEN</h2>
+<p id="welcome"></p>
+<p>Balans mwen:</p>
+<div class="balance" id="balance">0 HTG</div>
+
+<button onclick="deposit()">📥 DEPO</button>
+<button onclick="buy()">🛒 ACHAT</button>
+<button onclick="logout()">DEKONEKTE</button>
+
+</div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("gabooUsers")) || [];
+let currentUser = null;
+
+function register() {
+ let name = document.getElementById("name").value;
+ let email = document.getElementById("email").value;
+ let password = document.getElementById("password").value;
+
+ if(!name || !email || !password) {
+   alert("Ranpli tout enfòmasyon yo!");
+   return;
+ }
+
+ if(users.some(u => u.email === email)) {
+   alert("Kont sa deja egziste!");
+   return;
+ }
+
+ users.push({name,email,password,balance:0});
+ localStorage.setItem("gabooUsers",JSON.stringify(users));
+
+ alert("Kont kreye!");
+}
+
+function login() {
+ let email = document.getElementById("loginEmail").value;
+ let password = document.getElementById("loginPassword").value;
+
+ let user = users.find(u =>
+   u.email === email && u.password === password
+ );
+
+ if(!user) {
+   alert("Enfòmasyon yo pa kòrèk!");
+   return;
+ }
+
+ currentUser = user;
+ showAccount();
+}
+
+function showAccount() {
+ document.getElementById("register").style.display="none";
+ document.getElementById("login").style.display="none";
+ document.getElementById("account").style.display="block";
+
+ document.getElementById("welcome").innerText =
+ "Byenveni "+currentUser.name;
+
+ document.getElementById("balance").innerText =
+ currentUser.balance+" HTG";
+}
+
+function deposit() {
+ alert("Pou depoze, kontakte administratè Gaboo Shop sou Natcash. Balans lan ap ajou apre verifikasyon peman.");
+}
+
+function buy() {
+ alert("Chwazi pwodwi ou vle achte nan Gaboo Shop!");
+}
+
+function logout() {
+ currentUser=null;
+ location.reload();
+}
+</script>
+
+</body>
+</html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
