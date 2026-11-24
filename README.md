@@ -1,117 +1,46 @@
-<!DOCTYPE DOCTYPEhtmltml lang="ht"><!DOCTYPE html>
-<html lang="ht">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gaboo Shop 🎮</title>
+<div class="box">
+<h2>💰 DEPO SOU TUP_SHOP</h2>
 
-<style>
-body {
-  background:#080812;
-  color:white;
-  font-family:Arial;
-  text-align:center;
-  padding:20px;
-}
-.box {
-  background:#19192d;
-  padding:20px;
-  border-radius:15px;
-  max-width:400px;
-  margin:20px auto;
-}
-input {
-  width:90%;
-  padding:12px;
-  margin:8px;
-  border-radius:8px;
-  border:none;
-}
-button {
-  padding:12px 20px;
-  margin:8px;
-  border:0;
-  border-radius:8px;
-  background:#8b35ff;
-  color:white;
-  font-weight:bold;
-}
-.balance {
-  color:#00ff99;
-  font-size:25px;
-}
-</style>
-</head>
+<p>Antre kantite kòb ou vle depoze:</p>
 
-<body>
+<input type="number" id="depositAmount"
+placeholder="Kantite HTG">
 
-<h1>🎮 GABOO SHOP</h1>
-<p>Byenveni nan Gaboo Shop!</p>
+<p>📸 Mete foto resi tranzaksyon an:</p>
 
-<div class="box" id="register">
-<h2>KREYE KONT</h2>
-<input id="name" placeholder="Non ou">
-<input id="email" placeholder="Imèl ou">
-<input id="password" type="password" placeholder="Modpas">
-<button onclick="register()">KREYE KONT</button>
-</div>
+<input type="file" id="receipt" accept="image/*">
 
-<div class="box" id="login">
-<h2>KONEKTE</h2>
-<input id="loginEmail" placeholder="Imèl">
-<input id="loginPassword" type="password" placeholder="Modpas">
-<button onclick="login()">KONEKTE</button>
-</div>
+<button onclick="submitDeposit()">
+✅ VALIDE DEPO
+</button>
 
-<div class="box" id="account" style="display:none">
-<h2>👤 KONT MWEN</h2>
-<p id="welcome"></p>
-<p>Balans mwen:</p>
-<div class="balance" id="balance">0 HTG</div>
+<p id="depositMessage"></p>
 
-<button onclick="deposit()">📥 DEPO</button>
-<button onclick="buy()">🛒 ACHAT</button>
-<button onclick="logout()">DEKONEKTE</button>
+<hr>
 
+<h3>🚀 LIVREZON RAPID</h3>
+<p>⏱️ Tan livrezon estime: 30 a 50 minit.</p>
 </div>
 
 <script>
-let users = JSON.parse(localStorage.getItem("gabooUsers")) || [];
-let currentUser = null;
-
-function register() {
- let name = document.getElementById("name").value;
- let email = document.getElementById("email").value;
- let password = document.getElementById("password").value;
-
- if(!name || !email || !password) {
-   alert("Ranpli tout enfòmasyon yo!");
-   return;
- }
-
- if(users.some(u => u.email === email)) {
-   alert("Kont sa deja egziste!");
-   return;
- }
-
- users.push({name,email,password,balance:0});
- localStorage.setItem("gabooUsers",JSON.stringify(users));
-
- alert("Kont kreye!");
-}
-
-function login() {
- let email = document.getElementById("loginEmail").value;
- let password = document.getElementById("loginPassword").value;
-
- let user = users.find(u =>
-   u.email === email && u.password === password
+function submitDeposit() {
+ const amount = Number(
+ document.getElementById("depositAmount").value
  );
 
- if(!user) {
-   alert("Enfòmasyon yo pa kòrèk!");
+ const receipt =
+ document.getElementById("receipt").files[0];
+
+ if(amount <= 0 || !receipt) {
+   alert("Mete kantite kòb la ak foto resi a!");
    return;
- }cuivdiv class="banner">
+ }
+
+ document.getElementById("depositMessage").innerHTML =
+ "✅ Demann depo ou resevwa!<br>" +
+ "⏳ Nap verifye tranzaksyon ou.";
+}
+</scripts>
 <h2>🏙️ TUP SHOP 🏙️</h2>
 <p>💎 Diamonds | 🎟️ Pass | 🔥 Top-Up</p>
 </div>
