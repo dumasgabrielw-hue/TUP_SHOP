@@ -264,9 +264,6 @@ function searchProducts(){
  });
 }
 </script>
-
-</body>
-</html>
 <h2>🏙️ TUP SHOP 🏙️</h2>
 
 <p>💎 Diamonds | 🎟️ Pass | 🔥 Top-Up</p>
@@ -397,5 +394,4 @@ displayProducts(freeProducts,"freefire","Free Fire");
 
 </script>
 
-</body>
-</html>
+
