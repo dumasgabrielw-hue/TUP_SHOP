@@ -1,4 +1,45 @@
-unctionnsendDeposit() {<!DOCTYPE html>
+<button id="buyBtn" onclick="acheterProduit()">
+  ACHETER UN PRODUIT
+</button>
+
+<p id="status"></p>
+
+<style>
+#buyBtn {
+  background: linear-gradient(135deg, #6c2cff, #a000ff);
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#status {
+  color: #00ff88;
+  font-weight: bold;
+  margin-top: 12px;
+}
+</style>
+
+<script>
+function acheterProduit() {
+  const btn = document.getElementById("buyBtn");
+  const status = document.getElementById("status");
+
+  btn.disabled = true;
+  btn.innerText = "PROCESSING... ⏳";
+  status.innerText = "Traitement de votre commande...";
+
+  setTimeout(() => {
+    btn.innerText = "ACHETER UN PRODUIT";
+    btn.disabled = false;
+    status.innerText =
+      "Commande prête à être confirmée. Vérifiez votre paiement.";
+  }, 3000);
+}
+</script>unctionnsendDeposit() {<!DOCTYPE html>
 <html lang="ht">
 <head>
 <meta charset="UTF-8">
