@@ -49,8 +49,6 @@ input,select{
 </style>
 </head>
 
-<body>
-
 <header>
 <h1>🎮 GABOO SHOP</h1>
 <p>Byenvini nan pi bon boutik Top Up la!</p>
