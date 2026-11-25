@@ -1,4 +1,272 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaboo Shop 🎮</title>
 
+<style>
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:Arial,sans-serif;
+}
+
+body{
+ background:#080b16;
+ color:white;
+}
+
+header{
+ background:linear-gradient(135deg,#111936,#5124a8);
+ padding:25px 15px;
+ text-align:center;
+}
+
+header h1{
+ font-size:32px;
+ color:#fff;
+}
+
+header p{
+ color:#ddd;
+ margin-top:8px;
+}
+
+nav{
+ display:flex;
+ justify-content:center;
+ gap:20px;
+ padding:15px;
+ background:#11172a;
+ flex-wrap:wrap;
+}
+
+nav a{
+ color:white;
+ text-decoration:none;
+ font-weight:bold;
+}
+
+.banner{
+ margin:20px;
+ padding:30px 15px;
+ text-align:center;
+ border-radius:15px;
+ background:linear-gradient(135deg,#5424c9,#101d48);
+}
+
+.banner h2{
+ font-size:25px;
+ margin-bottom:10px;
+}
+
+.banner p{
+ color:#eee;
+}
+
+.search{
+ display:block;
+ width:90%;
+ max-width:500px;
+ margin:20px auto;
+ padding:14px;
+ border:none;
+ border-radius:10px;
+ font-size:16px;
+}
+
+.title{
+ text-align:center;
+ margin:25px 0;
+ color:#a98aff;
+}
+
+.games{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+ gap:15px;
+ padding:15px;
+}
+
+.card{
+ background:#151c31;
+ border:1px solid #303c61;
+ border-radius:15px;
+ padding:18px 12px;
+ text-align:center;
+ transition:.3s;
+}
+
+.card:hover{
+ transform:translateY(-5px);
+ border-color:#a47aff;
+}
+
+.icon{
+ font-size:40px;
+ margin-bottom:12px;
+}
+
+.card h3{
+ margin-bottom:10px;
+}
+
+.price{
+ color:#50e6a0;
+ font-weight:bold;
+ margin:12px 0;
+}
+
+button{
+ background:linear-gradient(135deg,#713cff,#a044ff);
+ color:white;
+ border:none;
+ padding:12px 18px;
+ border-radius:9px;
+ font-weight:bold;
+ cursor:pointer;
+ width:100%;
+}
+
+button:hover{
+ opacity:.85;
+}
+
+.payment{
+ margin:20px;
+ padding:25px;
+ background:#151c31;
+ border-radius:15px;
+ text-align:center;
+}
+
+.payment h2{
+ color:#50e6a0;
+ margin-bottom:12px;
+}
+
+footer{
+ background:#11172a;
+ text-align:center;
+ padding:25px;
+ margin-top:30px;
+ color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>GABOO SHOP 🎮</h1>
+<p>Pi bon kote pou achte Top Up jwèt ou yo!</p>
+</header>
+
+<nav>
+<a href="#">Akèy</a>
+<a href="#games">Boutik</a>
+<a href="#payment">Peman</a>
+<a href="#contact">Kontak</a>
+</nav>
+
+<section class="banner">
+<h2>🔥 BYENVINI NAN GABOO SHOP</h2>
+<p>Achte Diamonds, Pass ak lòt pwodwi jwèt ou renmen yo.</p>
+</section>
+
+<input class="search" type="text"
+id="search"
+placeholder="🔎 Chèche yon pwodwi..."
+onkeyup="searchProducts()">
+
+<h2 class="title" id="games">🎮 PWODWI NOU YO</h2>
+
+<section class="games">
+
+<div class="card">
+<div class="icon">💎</div>
+<h3>Flex City Diamonds</h3>
+<p>Top Up Diamonds</p>
+<div class="price">Pri disponib</div>
+<button onclick="buy('Flex City Diamonds')">ACHTE KOUNYE A</button>
+</div>
+
+<div class="card">
+<div class="icon">🎟️</div>
+<h3>Flex Pass</h3>
+<p>Flex City Pass</p>
+<div class="price">Pri disponib</div>
+<button onclick="buy('Flex Pass')">ACHTE KOUNYE A</button>
+</div>
+
+<div class="card">
+<div class="icon">🔥</div>
+<h3>Free Fire</h3>
+<p>Diamonds Free Fire</p>
+<div class="price">Pri disponib</div>
+<button onclick="buy('Free Fire Diamonds')">ACHTE KOUNYE A</button>
+</div>
+
+<div class="card">
+<div class="icon">⚽</div>
+<h3>DLS</h3>
+<p>Top Up DLS</p>
+<div class="price">Pri disponib</div>
+<button onclick="buy('DLS')">ACHTE KOUNYE A</button>
+</div>
+
+<div class="card">
+<div class="icon">🎯</div>
+<h3>PUBG Mobile</h3>
+<p>UC PUBG</p>
+<div class="price">Pri disponib</div>
+<button onclick="buy('PUBG Mobile')">ACHTE KOUNYE A</button>
+</div>
+
+</section>
+
+<section class="payment" id="payment">
+<h2>💰 MÒD PEMAN</h2>
+<p>Nou aksepte peman atravè Natcash.</p>
+<br>
+<p>📸 Voye prèv tranzaksyon ou pou verifikasyon.</p>
+</section>
+
+<section class="payment" id="contact">
+<h2>📞 KONTAK NOU</h2>
+<p>Gaboo Shop 🎮</p>
+<p>Sèvis kliyan disponib pou ede w.</p>
+</section>
+
+<footer>
+<p>© 2026 GABOO SHOP 🎮</p>
+<p>Tout dwa rezève.</p>
+</footer>
+
+<script>
+function buy(product){
+ alert("Ou chwazi: "+product+
+ "\nKontakte Gaboo Shop pou fini kòmand ou.");
+}
+
+function searchProducts(){
+ let input=document.getElementById("search")
+ .value.toLowerCase();
+
+ let cards=document.querySelectorAll(".card");
+
+ cards.forEach(card=>{
+ let name=card.innerText.toLowerCase();
+ card.style.display=name.includes(input)
+ ? "block":"none";
+ });
+}
+</script>
+
+</body>
+</html>
 <h2>🏙️ TUP SHOP 🏙️</h2>
 
 <p>💎 Diamonds | 🎟️ Pass | 🔥 Top-Up</p>
