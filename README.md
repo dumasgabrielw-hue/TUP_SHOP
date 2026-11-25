@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+<section class="payment" id="depo">
+  <h2>💰 AJOUTE LAJAN</h2>
+
+  <p>Balans ou: <b id="balance">0 HTG</b></p>
+
+  <input type="number" id="amount"
+  placeholder="Antre kantite HTG">
+
+  <p>📸 Mete foto resi Natcash ou</p>
+
+  <input type="file" id="receipt"
+  accept="image/*">
+
+  <button onclick="sendDeposit()">
+    VOYE POU VALIDASYON
+  </button>
+
+  <p id="depositMessage"></p>
+</section> <!DOCTYPE html>
 <html lang="ht">
 <head>
 <meta charset="UTF-8">
