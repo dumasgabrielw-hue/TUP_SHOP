@@ -1,4 +1,27 @@
-<section class="payment" id="depo">
+function sendDeposit() {
+  const amount = Number(
+    document.getElementById("amount").value
+  );
+
+  const receipt =
+    document.getElementById("receipt").files[0];
+
+  const message =
+    document.getElementById("depositMessage");
+
+  if (!amount || amount <= 0) {
+    message.innerText = "Antre yon kantite lajan valab.";
+    return;
+  }
+
+  if (!receipt || !receipt.type.startsWith("image/")) {
+    message.innerText = "Tanpri mete foto resi a.";
+    return;
+  }
+
+  message.innerText =
+    "Demann ou pare. Li bezwen voye sou sèvè a pou administratè a verifye li.";
+}<section class="payment" id="depo">
   <h2>💰 AJOUTE LAJAN</h2>
 
   <p>Balans ou: <b id="balance">0 HTG</b></p>
