@@ -1,4 +1,106 @@
-<div class="wallet">
+<section class="shop-wallet">
+  <h2>💰 MON BALANCE</h2>
+  <h1 id="balance">0 HTG</h1>
+  <button onclick="openDeposit()">AJOUTER SUR BALANCE</button>
+</section>
+
+<section id="depositBox" style="display:none">
+  <h3>AJOUTER SUR BALANCE</h3>
+  <input type="number" id="depositAmount"
+         placeholder="Montant en HTG">
+  <button onclick="depositRequest()">VALIDER</button>
+  <p id="depositStatus"></p>
+</section>
+
+<section class="shop-product">
+  <h2>🔥 FREE FIRE DIAMONDS</h2>
+  <p>100 Diamonds - 200 HTG</p>
+  <button onclick="buy('100 Diamonds',200)">
+    ACHETER
+  </button>
+</section>
+
+<section>
+  <h2>⏳ PRODUITS EN ATTENTE</h2>
+  <div id="pending"></div>
+</section>
+
+<style>
+.shop-wallet,.shop-product {
+  background:#171329;
+  color:white;
+  padding:20px;
+  margin:15px 0;
+  border-radius:15px;
+  text-align:center;
+}
+button {
+  background:#852cff;
+  color:white;
+  border:0;
+  padding:13px 20px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:disabled {
+  opacity:.5;
+}
+#pending p {
+  background:#25203b;
+  color:white;
+  padding:14px;
+  border-radius:10px;
+}
+</style>
+
+<script>
+let balance = Number(localStorage.getItem("gabooBalance")) || 0;
+
+function updateBalance(){
+  document.getElementById("balance").innerText =
+    balance + " HTG";
+  localStorage.setItem("gabooBalance",balance);
+}
+
+function openDeposit(){
+  document.getElementById("depositBox").style.display="block";
+  document.getElementById("depositBox").scrollIntoView();
+}
+
+function depositRequest(){
+  let amount = Number(document.getElementById("depositAmount").value);
+
+  if(!Number.isFinite(amount) || amount <= 0){
+    alert("Montant invalide !");
+    return;
+  }
+
+  document.getElementById("depositStatus").innerText =
+    "DEMANDE DE DÉPÔT EN ATTENTE DE VÉRIFICATION ⏳";
+}
+
+function buy(name,price){
+  if(balance < price){
+    alert("BALANCE INSUFFISANTE ! AJOUTEZ DE L'ARGENT.");
+    openDeposit();
+    return;
+  }
+
+  balance -= price;
+  updateBalance();
+
+  let order = document.createElement("p");
+  order.innerText =
+    name + " | " + price + " HTG | PRODUIT EN ATTENTE ⏳";
+
+  document.getElementById("pending").appendChild(order);
+
+  alert("ACHAT ENREGISTRÉ !");
+}
+
+updateBalance();
+</script><div class="wallet">
   <h2>💰 MON BALANCE</h2>
   <h1 id="balance">0 HTG</h1>
   <button onclick="showDeposit()">
