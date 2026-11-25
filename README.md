@@ -6,6 +6,342 @@
 <title>Gaboo Shop 🎮</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:Arial,sans-serif;
+ background:#f4f6fb;
+ color:#20283a;
+}
+header{
+ background:linear-gradient(135deg,#182c76,#5424b8);
+ color:white;padding:25px 15px;text-align:center;
+}
+header h1{font-size:30px}
+header p{margin-top:8px}
+nav{
+ display:flex;gap:10px;overflow-x:auto;
+ padding:14px;background:white;
+ position:sticky;top:0;z-index:10;
+}
+nav a{
+ white-space:nowrap;text-decoration:none;
+ color:#25345c;border:1px solid #ddd;
+ border-radius:25px;padding:12px 17px;
+ font-weight:bold;
+}
+.profile{
+ background:#eaf0ff;padding:20px;
+ margin:15px;border-radius:15px;
+}
+.profile h3{color:#243fa9}
+.balance{color:#253fae;font-size:21px;
+ font-weight:bold;margin-top:10px}
+.banner{
+ margin:15px;border-radius:18px;
+ background:linear-gradient(135deg,#34218c,#172b70);
+ color:white;padding:35px 15px;text-align:center;
+}
+.banner h2{margin-bottom:10px}
+.search{
+ display:block;width:92%;padding:15px;
+ margin:20px auto;border:1px solid #ddd;
+ border-radius:12px;font-size:16px;
+}
+.section{
+ margin:18px 15px;
+ border:1px solid #dce1f1;
+ border-radius:18px;overflow:hidden;
+ background:white;
+}
+.section-title{
+ padding:17px;background:#e9ebff;
+ color:#343db3;font-weight:bold;font-size:18px;
+}
+.gold-title{background:#fff1d9;color:#e69a00}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:10px;padding:12px;
+}
+.card{
+ border:1px solid #d7dce7;
+ border-radius:13px;overflow:hidden;
+ text-align:center;background:white;
+ display:flex;flex-direction:column;
+}
+.photo{
+ height:115px;background:#10121d;
+ display:flex;align-items:center;
+ justify-content:center;font-size:55px;
+}
+.card h3{
+ font-size:15px;padding:10px 4px;
+ min-height:57px;
+}
+.price{
+ color:#303dc0;font-weight:bold;
+ font-size:15px;padding:8px 2px;
+}
+.gold-price{color:#e69a00}
+.stock{font-size:11px;color:#399767;padding:7px}
+.card button{
+ background:#3035ef;color:white;
+ border:0;padding:13px 3px;
+ font-weight:bold;font-size:14px;
+ cursor:pointer;margin-top:auto;
+}
+.gold button{background:#f4a000}
+.other button{background:#5733bd}
+.payment,.contact{
+ margin:18px 15px;padding:22px;
+ background:white;border-radius:15px;
+ text-align:center;line-height:2;
+}
+.payment h2,.contact h2{color:#253db5}
+footer{
+ background:#17245b;color:white;
+ text-align:center;padding:25px;margin-top:25px;
+}
+.modal{
+ display:none;position:fixed;inset:0;
+ background:#0009;z-index:30;
+ align-items:center;justify-content:center;
+ padding:15px;
+}
+.modal-box{
+ background:white;border-radius:15px;
+ padding:22px;width:100%;max-width:400px;
+}
+.modal-box input{
+ width:100%;padding:13px;margin:10px 0;
+ border:1px solid #ccc;border-radius:8px;
+}
+.modal-box button{
+ width:100%;padding:13px;border:0;
+ border-radius:8px;background:#3035ef;
+ color:white;font-weight:bold;margin-top:8px;
+}
+.close{background:#777!important}
+@media(max-width:420px){
+ .grid{gap:7px;padding:8px}
+ .photo{height:95px;font-size:42px}
+ .card h3{font-size:13px}
+ .price{font-size:13px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>GABOO SHOP 🎮</h1>
+<p>Tout Top Up ou bezwen nan yon sèl kote!</p>
+</header>
+
+<nav>
+<a href="#">🏠 AKÈY</a>
+<a href="#boutik">🛍️ BOUTIK</a>
+<a href="#kont">👤 KONT MWEN</a>
+<a href="#payment">💰 DEPO</a>
+</nav>
+
+<div class="profile" id="kont">
+<h3>👤 Byenvini nan Gaboo Shop</h3>
+<p>Kliyan nou yo toujou enpòtan!</p>
+<div class="balance">💰 Balans: 0 HTG</div>
+</div>
+
+<div class="banner">
+<h2>🔥 GABOO SHOP</h2>
+<p>Achte Diamonds, Gold, Pass ak lòt pwodwi jwèt.</p>
+<p>⚡ Sèvis rapid • Livrezon manyèl</p>
+</div>
+
+<input class="search" id="search"
+placeholder="🔎 Chèche yon pwodwi..."
+oninput="searchProducts()">
+
+<div id="boutik">
+
+<!-- FLEX CITY -->
+
+<section class="section">
+<div class="section-title">💎 FLEX CITY – DIAMONDS</div>
+<div class="grid" id="diamonds">
+
+</div>
+</section>
+
+<!-- GOLD -->
+
+<section class="section">
+<div class="section-title gold-title">🪙 FLEX CITY – PACK GOLD</div>
+<div class="grid" id="gold"></div>
+</section>
+
+<!-- FREE FIRE -->
+
+<section class="section">
+<div class="section-title">🔥 FREE FIRE DIAMONDS</div>
+<div class="grid" id="freefire"></div>
+</section>
+
+<!-- OTHER GAMES -->
+
+<section class="section">
+<div class="section-title">🎮 LÒT JÈT</div>
+<div class="grid" id="other"></div>
+</section>
+
+</div>
+
+<section class="payment" id="payment">
+<h2>💰 PEMAN NATCASH</h2>
+<p>Fè peman ou atravè Natcash.</p>
+<p>📱 Nimewo Natcash: <b id="natcash">POU RANPLI</b></p>
+<p>📸 Voye prèv tranzaksyon an pou verifikasyon.</p>
+<p>⚡ Livrezon fèt apre verifikasyon peman.</p>
+</section>
+
+<section class="contact">
+<h2>📞 KONTAK GABOO SHOP</h2>
+<p>Kontakte administratè a pou èd.</p>
+<p>GABOO SHOP 🎮</p>
+</section>
+
+<footer>
+<p>© 2026 GABOO SHOP 🎮</p>
+<p>Tout dwa rezève.</p>
+</footer>
+
+<div class="modal" id="modal">
+<div class="modal-box">
+<h2>🛒 Fè kòmand ou</h2>
+<p id="selected"></p>
+<input id="player" placeholder="ID jwèt ou">
+<input id="playername" placeholder="Non ou">
+<button onclick="submitOrder()">KONFIME KÒMAND</button>
+<button class="close" onclick="closeModal()">FÈMEN</button>
+<p id="message"></p>
+</div>
+</div>
+
+<script>
+
+// METE PRI AK PWODWI YO LA
+
+const diamonds = [
+["825 Diamonds – 80% Rabè","499.78"],
+["825 Diamonds – 70% Rabè","600.60"],
+["825 Diamonds – 60% Rabè","798.60"],
+["825 Diamonds – 40% Rabè","1155"]
+];
+
+const gold = [
+["2 750 Lò","686.40"],
+["5 750 Lò","1374.45"],
+["15 000 Lò","3436.95"],
+["62 500 Lò","6873.90"],
+["130 000 Lò","13749.45"],
+["145 000 Lò","32998.35"],
+["225 000 Lò","49498.35"],
+["320 000 Lò","65998.35"]
+];
+
+const freefire = [
+["100 Diamonds","Pri pou mete"],
+["310 Diamonds","Pri pou mete"],
+["520 Diamonds","Pri pou mete"],
+["1060 Diamonds","Pri pou mete"]
+];
+
+const other = [
+["Flex Pass","Pri pou mete"],
+["DLS Top Up","Pri pou mete"],
+["PUBG Mobile UC","Pri pou mete"]
+];
+
+let currentProduct = "";
+
+function createCards(items,container,icon,style=""){
+ const box=document.getElementById(container);
+
+ items.forEach(item=>{
+ const card=document.createElement("div");
+ card.className="card "+style;
+
+ card.innerHTML=`
+ <div class="photo">${icon}</div>
+ <h3>${item[0]}</h3>
+ <div class="price ${style==='gold'?'gold-price':''}">
+ ${item[1].includes("Pri")?item[1]:item[1]+" HTG"}
+ </div>
+ <div class="stock">⚡ Livrezon Manyèl</div>
+ <button onclick="buy('${item[0]}','${item[1]}')">
+ 🛒 Achte
+ </button>`;
+
+ box.appendChild(card);
+ });
+}
+
+createCards(diamonds,"diamonds","💎");
+createCards(gold,"gold","🪙","gold");
+createCards(freefire,"freefire","🔥");
+createCards(other,"other","🎮","other");
+
+function buy(name,price){
+ currentProduct=name+" - "+price+" HTG";
+ document.getElementById("selected").innerText=
+ "Pwodwi: "+currentProduct;
+ document.getElementById("modal").style.display="flex";
+ document.getElementById("message").innerText="";
+}
+
+function closeModal(){
+ document.getElementById("modal").style.display="none";
+}
+
+function submitOrder(){
+ const id=document.getElementById("player").value.trim();
+ const name=document.getElementById("playername").value.trim();
+
+ if(!id || !name){
+  document.getElementById("message").innerText=
+  "Tanpri ranpli ID jwèt la ak non ou.";
+  return;
+ }
+
+ const order=
+ "KÒMAND GABOO SHOP\n"+
+ "Pwodwi: "+currentProduct+"\n"+
+ "Non: "+name+"\n"+
+ "ID jwèt: "+id;
+
+ document.getElementById("message").innerText=
+ "Kòmand ou prepare! Kontakte administratè Gaboo Shop pou verifye peman ak livrezon.";
+
+ alert(order);
+}
+
+function searchProducts(){
+ const value=document.getElementById("search").value.toLowerCase();
+ document.querySelectorAll(".card").forEach(card=>{
+ card.style.display=card.innerText.toLowerCase().includes(value)
+ ? "flex":"none";
+ });
+}
+
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaboo Shop 🎮</title>
+
+<style>
 *{
  margin:0;
  padding:0;
