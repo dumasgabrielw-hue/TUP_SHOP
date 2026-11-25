@@ -627,7 +627,7 @@ function searchProducts(){
 
 <script>
 
-}<img src="flex-city-banner.jpg"
+<img src="flex-city-banner.jpg"
 class="flex-logo"
 alt="Flex City RP">
 const flexProducts = [
