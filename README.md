@@ -626,14 +626,10 @@ function searchProducts(){
 </footer>
 
 <script>
-.flex-logo{
- width:100%;
- max-height:220px;
- object-fit:cover;
- border-radius:15px;
- display:block;
- margin-bottom:12px;
-}
+
+}<img src="flex-city-banner.jpg"
+class="flex-logo"
+alt="Flex City RP">
 const flexProducts = [
 ["Retire publicité",400],
 ["FLEX PASS",615],
