@@ -1,5 +1,6 @@
 
 <h2>🏙️ TUP SHOP 🏙️</h2>
+
 <p>💎 Diamonds | 🎟️ Pass | 🔥 Top-Up</p>
 </div>
 
