@@ -1,5 +1,171 @@
-function sendDeposit() {
-  const amount = Number(
+unctionnsendDeposit() {<!DOCTYPE html>
+<html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaboo Shop 🎮</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#080812;
+ color:white;
+ font-family:Arial,sans-serif;
+}
+header{
+ background:linear-gradient(135deg,#15152b,#6420a0);
+ text-align:center;
+ padding:25px 12px;
+}
+header h1{font-size:32px}
+.container{max-width:900px;margin:auto;padding:15px}
+.card{
+ background:#17172a;
+ padding:18px;
+ border-radius:15px;
+ margin:15px 0;
+ border:1px solid #6332a0;
+}
+button{
+ background:#8c35df;
+ color:white;
+ border:0;
+ padding:13px;
+ border-radius:9px;
+ width:100%;
+ margin-top:10px;
+ font-weight:bold;
+}
+input,select{
+ width:100%;
+ padding:13px;
+ margin-top:10px;
+ border-radius:8px;
+ border:0;
+}
+.price{color:#42ff9b;font-weight:bold}
+.hidden{display:none}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎮 GABOO SHOP</h1>
+<p>Byenvini nan pi bon boutik Top Up la!</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>👛 Balans mwen</h2>
+<h1 id="balance">0 HTG</h1>
+<button onclick="show('deposit')">💰 DEPOZE LAJAN</button>
+</div>
+
+<div id="deposit" class="card hidden">
+<h2>💳 Fè depo</h2>
+<p>Voye peman ou sou Natcash.</p>
+<input id="amount" type="number" placeholder="Kantite HTG">
+<input id="reference" placeholder="Nimewo tranzaksyon">
+<label>Foto tranzaksyon:</label>
+<input id="proof" type="file" accept="image/*">
+<button onclick="deposit()">Voye demann depo</button>
+</div>
+
+<div class="card">
+<h2>🎮 Pwodwi nou yo</h2>
+
+<div class="card">
+<h3>🏙️ Flex City</h3>
+<p>125 Diamonds</p>
+<p class="price">187 HTG</p>
+<button onclick="buy('Flex City - 125 Diamonds',187)">Achte kounye a</button>
+</div>
+
+<div class="card">
+<h3>💎 Flex Pass</h3>
+<p class="price">Pri pou konfime</p>
+<button onclick="buy('Flex Pass',0)">Kòmande</button>
+</div>
+
+<div class="card">
+<h3>🔥 Free Fire</h3>
+<p>Diamonds Top Up</p>
+<button onclick="buy('Free Fire Diamonds',0)">Kòmande</button>
+</div>
+
+<div class="card">
+<h3>⚽ DLS</h3>
+<p>Top Up DLS</p>
+<button onclick="buy('DLS Top Up',0)">Kòmande</button>
+</div>
+
+<div class="card">
+<h3>🎯 PUBG Mobile</h3>
+<p>UC Top Up</p>
+<button onclick="buy('PUBG Mobile UC',0)">Kòmande</button>
+</div>
+</div>
+
+<div id="order" class="card hidden">
+<h2>📦 Fini kòmand ou</h2>
+<p id="product"></p>
+<input id="player" placeholder="ID jwèt ou">
+<input id="contact" placeholder="Nimewo WhatsApp ou">
+<button onclick="sendOrder()">Konfime kòmand</button>
+</div>
+
+<div class="card">
+<h3>📋 Swiv kòmand mwen</h3>
+<p>Voye nimewo kòmand ou bay administratè a pou verifye estati li.</p>
+</div>
+
+</div>
+
+<script>
+let balance = Number(localStorage.getItem("gabooBalance") || 0);
+let selected = "";
+
+function update(){
+ document.getElementById("balance").innerText=balance+" HTG";
+}
+function show(id){
+ document.getElementById(id).classList.toggle("hidden");
+}
+function deposit(){
+ let amount=Number(document.getElementById("amount").value);
+ let ref=document.getElementById("reference").value;
+ let proof=document.getElementById("proof").files[0];
+
+ if(amount<=0 || !ref || !proof){
+ alert("Tanpri ranpli tout enfòmasyon yo.");
+ return;
+ }
+ alert("Demann depo a pare. Administratè a dwe verifye peman an anvan balans lan ogmante.");
+}
+function buy(name,price){
+ selected=name;
+ document.getElementById("product").innerText=name+" - "+(price?price+" HTG":"Pri pou konfime");
+ document.getElementById("order").classList.remove("hidden");
+}
+function sendOrder(){
+ let player=document.getElementById("player").value;
+ let contact=document.getElementById("contact").value;
+
+ if(!player || !contact){
+ alert("Ranpli ID jwèt ak nimewo kontak ou.");
+ return;
+ }
+ alert("Kòmand ou prepare. Voye enfòmasyon yo bay administratè Gaboo Shop pou konfimasyon.");
+}
+update();
+</script>
+
+</body>
+</html>
+const amount = Number(
     document.getElementById("amount").value
   );
 
