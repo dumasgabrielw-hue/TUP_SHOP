@@ -1,4 +1,73 @@
-<button id="buyBtn" onclick="acheterProduit()">
+<div class="wallet">
+  <h2>💰 MON BALANCE</h2>
+  <h1 id="balance">0 HTG</h1>
+  <button onclick="showDeposit()">
+    AJOUTER SUR BALANCE
+  </button>
+</div>
+
+<div id="deposit" style="display:none;">
+  <h3>AJOUTER SUR BALANCE</h3>
+  <input id="amount" type="number"
+         placeholder="Montant HTG">
+  <button onclick="requestDeposit()">
+    CONTINUER
+  </button>
+</div>
+
+<h2>🛒 PRODUITS</h2>
+
+<div class="product">
+  <h3>Free Fire Diamonds 💎</h3>
+  <p>Prix: 200 HTG</p>
+  <button onclick="buyProduct('Free Fire Diamonds',200)">
+    ACHETER
+  </button>
+</div>
+
+<h2>📦 PRODUITS EN ATTENTE</h2>
+<div id="pending"></div>
+
+<script>
+let balance = 0;
+
+function updateBalance() {
+  document.getElementById("balance").innerText =
+    balance + " HTG";
+}
+
+function showDeposit() {
+  document.getElementById("deposit").style.display = "block";
+}
+
+function requestDeposit() {
+  let amount = Number(document.getElementById("amount").value);
+
+  if (amount <= 0 || !Number.isFinite(amount)) {
+    alert("Montant invalide");
+    return;
+  }
+
+  alert("Demande de dépôt enregistrée. Paiement à vérifier.");
+}
+
+function buyProduct(name, price) {
+  if (balance < price) {
+    alert("Balance insuffisante ! Ajoutez de l'argent.");
+    showDeposit();
+    return;
+  }
+
+  balance -= price;
+  updateBalance();
+
+  let item = document.createElement("p");
+  item.innerText = name + " - " + price +
+    " HTG | PRODUIT EN ATTENTE ⏳";
+
+  document.getElementById("pending").appendChild(item);
+}
+</script><button id="buyBtn" onclick="acheterProduit()">
   ACHETER UN PRODUIT
 </button>
 
