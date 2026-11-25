@@ -566,8 +566,7 @@ onkeyup="searchProducts()">
 <section class="payment" id="payment">
 <h2>💰 MÒD PEMAN</h2>
 <p>Nou aksepte peman atravè Natcash.</p>
-<br>
-<p>📸 Voye prèv tranzaksyon ou pou verifikasyon.</p>
+scriptp>📸 Voye prèv tranzaksyon ou pou verifikasyon.</p>
 </section>
 
 <section class="payment" id="contact">
@@ -627,7 +626,14 @@ function searchProducts(){
 </footer>
 
 <script>
-
+.flex-logo{
+ width:100%;
+ max-height:220px;
+ object-fit:cover;
+ border-radius:15px;
+ display:block;
+ margin-bottom:12px;
+}
 const flexProducts = [
 ["Retire publicité",400],
 ["FLEX PASS",615],
